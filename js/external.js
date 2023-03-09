@@ -15,6 +15,11 @@ function findMatch(query, cities) {
     });
 }
 
+//function borrowed from stack overflow to add commas to numbers
+function numberWithCommas(x){
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
+}
+
 //function for displaying the match
 function displayMatch() {
     const matchArray = findMatch(this.value, cities);
@@ -25,16 +30,11 @@ function displayMatch() {
         return `
            <li>
              <span class="name">${cityName}, ${stateName}</span>
-             <span class="population">${place.population}</span>
+             <span class="population">${numberWithCommas(place.population)}</span>
            </li>
         `;
     }).join('');
     suggestion.innerHTML = html;
-}
-
-//function borrowed from stack overflow to add commas to numbers
-function numberWithCommas(x){
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
 }
 
 //variables for query selectors
